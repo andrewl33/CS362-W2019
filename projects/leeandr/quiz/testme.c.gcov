@@ -1,0 +1,92 @@
+        -:    0:Source:testme.c
+        -:    0:Graph:testme.gcno
+        -:    0:Data:testme.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <time.h>
+        -:    5:
+      494:    6:char inputChar()
+        -:    7:{
+      494:    8:  char testChars[] = {'[',
+        -:    9:                      ']',
+        -:   10:                      '(',
+        -:   11:                      ')',
+        -:   12:                      '{',
+        -:   13:                      '}',
+        -:   14:                      ' ',
+        -:   15:                      'a',
+        -:   16:                      'x',
+        -:   17:                      '\0'};
+        -:   18:
+      494:   19:  return testChars[rand() % 10];
+        -:   20:}
+        -:   21:
+      494:   22:void inputString(char *s)
+        -:   23:{
+      494:   24:  char testString[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
+      494:   25:  char testChars[5] = {'r', 'e', 's', 'e', 't'};
+        -:   26:
+     2964:   27:  for (int i = 0; i < 5; i++)
+        -:   28:  {
+        -:   29:    int randVal;
+        -:   30:    do
+        -:   31:    {
+     4338:   32:      randVal = rand() % 6;
+     4338:   33:    } while (testString[randVal] != '\0');
+        -:   34:
+     2470:   35:    testString[randVal] = testChars[i];
+        -:   36:  }
+        -:   37:
+      494:   38:  strcpy(s, testString);
+      494:   39:}
+        -:   40:
+        1:   41:void testme()
+        -:   42:{
+        1:   43:  int tcCount = 0;
+        1:   44:  char *s = (char *)malloc(sizeof(char) * 6);
+        -:   45:  char c;
+        1:   46:  int state = 0;
+        -:   47:  while (1)
+        -:   48:  {
+      987:   49:    tcCount++;
+      494:   50:    c = inputChar();
+      494:   51:    inputString(s); // modified to keep memory
+      494:   52:    printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
+        -:   53:
+      494:   54:    if (c == '[' && state == 0)
+        1:   55:      state = 1;
+      494:   56:    if (c == '(' && state == 1)
+        1:   57:      state = 2;
+      494:   58:    if (c == '{' && state == 2)
+        1:   59:      state = 3;
+      494:   60:    if (c == ' ' && state == 3)
+        1:   61:      state = 4;
+      494:   62:    if (c == 'a' && state == 4)
+        1:   63:      state = 5;
+      494:   64:    if (c == 'x' && state == 5)
+        1:   65:      state = 6;
+      494:   66:    if (c == '}' && state == 6)
+        1:   67:      state = 7;
+      494:   68:    if (c == ')' && state == 7)
+        1:   69:      state = 8;
+      494:   70:    if (c == ']' && state == 8)
+        1:   71:      state = 9;
+      494:   72:    if (s[0] == 'r' && s[1] == 'e' && s[2] == 's' && s[3] == 'e' && s[4] == 't' && s[5] == '\0' && state == 9)
+        -:   73:    {
+        1:   74:      printf("error\n");
+        1:   75:      exit(200);
+        -:   76:    }
+        -:   77:  }
+        -:   78:
+        -:   79:  free(s);
+        -:   80:}
+        -:   81:
+        1:   82:int main(int argc, char *argv[])
+        -:   83:{
+        1:   84:  srand(time(NULL));
+        1:   85:  testme();
+    #####:   86:  return 0;
+        -:   87:}
