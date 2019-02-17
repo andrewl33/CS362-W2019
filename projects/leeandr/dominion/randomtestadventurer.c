@@ -55,7 +55,7 @@ void testAdventurerCard(int iterations)
         {
           testState->deck[curPlayer][j] = (rand() % 3) + 4;
         }
-            }
+      }
       // run cardEffect, -1 and NULLs are used for unused values
       cardEffectVal = cardEffect(adventurer, -1, -1, -1, testState, -1, NULL);
 
