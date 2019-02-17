@@ -757,7 +757,10 @@ int adventurerCard(int drawntreasure, struct gameState *state, int currentPlayer
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1]; //top card of hand is most recently drawn card.
     if (cardDrawn == copper || cardDrawn == silver)
+    {
       drawntreasure++;
+    }
+
     else
     {
       temphand[z] = cardDrawn;
@@ -924,7 +927,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch (card)
   {
   case adventurer:
-    return adventurerCard(card, state, currentPlayer, cardDrawn, temphand, z);
+    return adventurerCard(drawntreasure, state, currentPlayer, cardDrawn, temphand, z);
   case council_room:
     //+4 Cards
     for (i = 0; i < 4; i++)
