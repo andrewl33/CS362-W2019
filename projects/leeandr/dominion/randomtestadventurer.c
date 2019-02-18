@@ -1,5 +1,5 @@
 /**
- * gcc randomtesthelper.c rngs.c dominion.c randomtestadventurer.c -lm -o testing -std=c99
+ * gcc rngs.c dominion.c randomtestadventurer.c -lm -o testing -std=c99
  * Tests card: adventurer
  * */
 #include <stdio.h>
@@ -7,7 +7,6 @@
 #include <time.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
-#include "randomtesthelper.h"
 
 void testAdventurerCard(int iterations)
 {
