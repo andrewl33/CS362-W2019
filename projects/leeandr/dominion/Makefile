@@ -33,21 +33,21 @@ runrandomtests: randomtestadventurer.c
 	echo "Result for running randomtestadventurer:" > randomtestadventurer.out
 	gcc rngs.c dominion.c randomtestadventurer.c -o testing -std=c99 $(CFLAGS)
 	./testing >> randomtestadventurer.out
-	gcov dominion.c >> randomtestadventurer.out
+	gcov -b dominion.c >> randomtestadventurer.out
 	echo "dominion.c.gcov file:" >> randomtestadventurer.out
 	cat dominion.c.gcov >> randomtestadventurer.out
 
 	echo "Result for running randomtestcard1:" > randomtestcard1.out
 	gcc rngs.c dominion.c randomtestcard1.c -o testing -std=c99 $(CFLAGS)
 	./testing >> randomtestcard1.out
-	gcov dominion.c >> randomtestcard1.out
+	gcov -b dominion.c >> randomtestcard1.out
 	echo "dominion.c.gcov file:" >> randomtestcard1.out
 	cat dominion.c.gcov >> randomtestcard1.out
 
 	echo "Result for running randomtestcard2:" > randomtestcard2.out
 	gcc rngs.c dominion.c randomtestcard2.c -o testing -std=c99 $(CFLAGS)
 	./testing >> randomtestcard2.out
-	gcov dominion.c >> randomtestcard2.out
+	gcov -b dominion.c >> randomtestcard2.out
 	echo "dominion.c.gcov file:" >> randomtestcard2.out
 	cat dominion.c.gcov >> randomtestcard2.out
 
