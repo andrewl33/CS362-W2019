@@ -16,6 +16,9 @@
  */
 
 import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Performs Validation Test for url validations.
@@ -32,7 +35,7 @@ public class UrlValidatorTest extends TestCase {
    }
 
    @Override
-protected void setUp() {
+   protected void setUp() {
       for (int index = 0; index < testPartsIndex.length - 1; index++) {
          testPartsIndex[index] = 0;
       }
@@ -87,6 +90,7 @@ protected void setUp() {
       assertTrue(urlVal.isValid("http://www.google.com/"));
       int statusPerLine = 60;
       int printed = 0;
+      int TESTCYCLES = 0;
       if (printIndex)  {
          statusPerLine = 6;
       }
@@ -98,8 +102,10 @@ protected void setUp() {
             ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
             testBuffer.append(part[index].item);
             expected &= part[index].valid;
+
          }
          String url = testBuffer.toString();
+         TESTCYCLES++;
          boolean result = urlVal.isValid(url);
          if(result == true)
         	 System.out.println(url);
@@ -124,6 +130,8 @@ protected void setUp() {
       if (printStatus) {
          System.out.println();
       }
+
+      System.out.println(TESTCYCLES);
    }
 
    public void testValidator202() {
@@ -183,6 +191,7 @@ protected void setUp() {
     * Only used to debug the unit tests.
     * @param argv
     */
+   @Test
    public static void main(String[] argv) {
 
 	   UrlValidatorTest fct = new UrlValidatorTest("url test");
