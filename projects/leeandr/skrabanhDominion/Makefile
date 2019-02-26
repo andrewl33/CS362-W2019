@@ -63,40 +63,49 @@ unittestresult: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c card
 	gcc test_helper.c rngs.c dominion.c unittest1.c -lm -o unittest1 $(CFLAGS)
 	./unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittest1.out
 	
 	echo "unittest2.c:" >> unittestresults.out
 	gcc test_helper.c rngs.c dominion.c unittest2.c -lm -o unittest2 $(CFLAGS)
 	./unittest2 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittest2.out
 	
 	echo "unittest3.c:" >> unittestresults.out
 	gcc test_helper.c rngs.c dominion.c unittest3.c -lm -o unittest3 $(CFLAGS)
 	./unittest3 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittest3.out
 	
 	echo "unittest4.c:" >> unittestresults.out
 	gcc  test_helper.c rngs.c dominion.c unittest4.c -lm -o unittest4 $(CFLAGS)
 	./unittest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-		echo "cardtest1.c:" >> unittestresults.out
+	cat dominion.c.gcov >> unittest4.out
+
+	echo "cardtest1.c:" >> unittestresults.out
 	gcc test_helper.c rngs.c dominion.c cardtest1.c -lm -o cardtest1 $(CFLAGS)
 	./cardtest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> cardtest1.out
 	
 	echo "cardtest2.c:" >> unittestresults.out
 	gcc test_helper.c rngs.c dominion.c cardtest2.c -lm -o cardtest2 $(CFLAGS)
 	./cardtest2 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-	
+	cat dominion.c.gcov >> cardtest2.out
+
 	echo "cardtest3.c:" >> unittestresults.out
 	gcc test_helper.c rngs.c dominion.c cardtest3.c -lm -o cardtest3 $(CFLAGS)
 	./cardtest3 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> cardtest3.out
 	
 	echo "cardtest4.c:" >> unittestresults.out
 	gcc  test_helper.c rngs.c dominion.c cardtest4.c -lm -o cardtest4 $(CFLAGS)
 	./cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> cardtest4.out
 
 allusertest: runrandomtests unittestresult
 
