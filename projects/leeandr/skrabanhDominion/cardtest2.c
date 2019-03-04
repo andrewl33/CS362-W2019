@@ -15,9 +15,9 @@ void testSmithyCard()
   struct gameState *state = newGame();
   int *kCards = kingdomCards(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
   initializeGame(2, kCards, 1, state);
-
+  printf("deck size is: %d\n", state->deckCount[0]);
   cardEffect(smithy, 0, 0, 0, state, 0, 0);
-  assertEqual("draws three cards", 8, state->handCount[0]);
+  assertEqual("draws three cards", 7, state->handCount[0]);
   assertEqual("deckCount should be 2", 2, state->deckCount[0]);
 }
 

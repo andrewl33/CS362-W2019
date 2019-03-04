@@ -1,5 +1,5 @@
 /**
- * gcc test_helper.c rngs.c dominion.c cardtest1.c -lm -o testing -std=c99
+ * gcc test_helper.c rngs.c dominion.c cardtest1.c -g -lm -o cardtest1 -std=c99
  * Tests card: adventurer
  * */
 #include <stdio.h>
