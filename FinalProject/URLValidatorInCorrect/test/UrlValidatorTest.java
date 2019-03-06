@@ -77,13 +77,68 @@ public class UrlValidatorTest extends TestCase {
         private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
         //  random regexes, where falses could be 0 to list size
-        public List<Pair> generateUrls(int number) {
+        public Pair<String, Boolean> generateUrls() {
+            boolean isValid = true;
+            StringBuilder sb = new StringBuilder();
+            ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
+            url.add(generateScheme());
+            url.add(generateAuthority());
+            url.add(generatePort());
+            url.add(generatePath());
+            url.add(generateQuery());
 
+            for (int i = 0; i < 5; i++) {
+                sb.append(url.get(i).getKey());
+                if (!url.get(i).getValue()) {
+                    isValid = false;
+                }
+            }
+
+            return new Pair<>(sb.toString(), isValid);
         }
 
         private Pair<String, Boolean> generateScheme() {
             // has to be a part of valid schemes
+            if (rand.nextBoolean()) {
+                return new Pair<>(validSchemes.get(rand.nextInt(validSchemes.size())), true);
+            } else {
+                StringBuilder sb = new StringBuilder(validSchemes.get(rand.nextInt(validSchemes.size()));
 
+                for (int i = 0; i < rand.nextInt(4); i++)  {
+                    switch(rand.nextInt(4)) {
+                        case 0:
+                            //  prepend
+                            sb.insert(0, nextChar(authAlphabet));
+                        case 1:
+                            // append
+                            sb.append(nextChar(authAlphabet));
+                        case 2:
+                            // replace
+                            int location = rand.nextInt(sb.length());
+                            sb.replace(location, location, Character.toString(nextChar(authAlphabet)));
+                        case 3:
+                            // delete
+                            sb.deleteCharAt(rand.nextInt(sb.length()));
+                    }
+                }
+
+                // check if empty
+                if (sb.length() == 0) {
+                    return new Pair<>("", true);
+                }
+
+                // check if unchanged
+                boolean isValid = false;
+                for (int i = 0; i < validSchemes.size(); i++) {
+                    if (validSchemes.get(i).equals(sb.toString())) {
+                        isValid = true;
+                        break;
+                    }
+                }
+
+                return new Pair<>(sb.toString(), isValid);
+
+            }
         }
 
         private Pair<String, Boolean> generateAuthority() {
