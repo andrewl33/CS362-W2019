@@ -102,7 +102,7 @@ public class UrlValidatorTest extends TestCase {
             if (rand.nextBoolean()) {
                 return new Pair<>(validSchemes.get(rand.nextInt(validSchemes.size())), true);
             } else {
-                StringBuilder sb = new StringBuilder(validSchemes.get(rand.nextInt(validSchemes.size()));
+                StringBuilder sb = new StringBuilder(validSchemes.get(rand.nextInt(validSchemes.size())));
 
                 for (int i = 0; i < rand.nextInt(4); i++)  {
                     switch(rand.nextInt(4)) {
