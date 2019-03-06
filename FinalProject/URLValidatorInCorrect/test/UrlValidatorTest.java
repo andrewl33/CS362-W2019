@@ -2,6 +2,10 @@
 
 import junit.framework.TestCase;
 import org.junit.Test;
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.util.Pair;
 
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
@@ -59,21 +63,21 @@ public class UrlValidatorTest extends TestCase {
     private static class UrlGenerator {
         private Random rand = new Random(System.currentTimeMillis());
         private final int nullChance = 100; // 1% chance
-        private final List<String> validSchemes = new ArrayList<String>("http://", "ftp://", "h3t://", "");
+        private final ArrayList<String> validSchemes = new ArrayList<String>() {{
+            add("http://");
+            add("ftp://");
+            add("h3t://");
+            add("");
+        }};
         private final int maxPort = 65536;
         private final int minPort = 0;
-        private final char[] testAlphabet = "#$%&-_=+qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlL:zZxXcCvBnNmM./?1234567890".toCharArray();
+        // private final char[] testAlphabet = "#$%&-_=+qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlL:zZxXcCvBnNmM./?1234567890".toCharArray();
         private final char[] pathAlphabet = "#qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvBnNmM.1234567890".toCharArray();
         private final char[] queryAlphabet = "qwertyuiopasdfghjklzxcvbnm".toCharArray();
+        private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
         //  random regexes, where falses could be 0 to list size
-        public List<Pair<String, Boolean>> generateUrls(int number) {
-
-        }
-
-        // should pass through all tests
-        // maximum one false
-        public List<Pair<String, Boolean>> generateDistributedUrls() {
+        public List<Pair> generateUrls(int number) {
 
         }
 
@@ -83,13 +87,95 @@ public class UrlValidatorTest extends TestCase {
         }
 
         private Pair<String, Boolean> generateAuthority() {
+            if (setToNull()) {
+                return new Pair<String, Boolean>("", false);
+            }
 
-            int switchSize = 0;
-            int authType = rand.nextInt(switchSize);
+            if (rand.nextBoolean()) {
+                // numbers
+                int numbersCount = 0;
+                boolean isValid = true;
+                int i = 0;
+                StringBuilder sb = new StringBuilder();
+                if (rand.nextBoolean()) {
+                    sb.append('.');
+                    isValid = false;
+                }
 
-            // generate numeric url
+                for (i = 0; i < rand.nextInt(8); i++) {
+                    int nextInt = rand.nextInt(500);
 
-            // generate named url
+                    if (nextInt > 255) {
+                        isValid = false;
+                    }
+
+                    sb.append(nextInt);
+                    sb.append('.');
+
+                }
+
+                if (rand.nextBoolean()) {
+                    sb.append('.');
+                    isValid = false;
+                } else {
+                    int nextInt = rand.nextInt(500);
+
+                    if (nextInt > 255) {
+                        isValid = false;
+                    }
+
+                    sb.append(nextInt);
+                    i++;
+                }
+
+                if (i != 4) {
+                    isValid = false;
+                }
+
+                return new Pair<String, Boolean>(sb.toString(), isValid);
+
+            } else {
+                // create string
+                boolean isValid = true;
+                StringBuilder sb = new StringBuilder();
+
+                // insert first
+                if (rand.nextBoolean()) {
+                    sb.append("www.");
+                }
+
+                if (rand.nextBoolean()) {
+                    sb.append('.');
+                    isValid = false;
+                }
+
+                // insert body
+                for (int i = 1; i < rand.nextInt(5) + 1; i++) {
+                    for (int j = 1; j < rand.nextInt(10) + 1; j++) {
+                        sb.append(nextChar(authAlphabet));
+                    }
+                    sb.append(".");
+                }
+
+                // insert tail
+                if (rand.nextBoolean()) {
+                    if (rand.nextBoolean()) {
+                        sb.append(nextChar(authAlphabet));
+                    }
+                    isValid = false;
+                } else {
+                    for (int i = 2; i < rand.nextInt(8) +2; i++) {
+                        char nc = nextChar(authAlphabet);
+
+                        if (Character.isDigit(nc)) {
+                            isValid = false;
+                        }
+                        sb.append(nc);
+                    }
+                }
+
+                return new Pair<String, Boolean>(sb.toString(), isValid);
+            }
         }
 
         private Pair<String, Boolean> generatePort() {
@@ -98,13 +184,15 @@ public class UrlValidatorTest extends TestCase {
             }
 
             boolean isValid = false;
-            int portNumber = rand.nextInt(-10000, 100000);
+            int portNumber = rand.nextInt(100000);
+            if (rand.nextBoolean()) {
+                portNumber*=-1;
+            }
             StringBuilder portBuilder = new StringBuilder();
             portBuilder.append(":");
 
             // check if number
-            if (maxPort > portNumber && minPort < portNumber)
-            {
+            if (maxPort > portNumber && minPort < portNumber) {
                 isValid = true;
             }
 
@@ -154,7 +242,7 @@ public class UrlValidatorTest extends TestCase {
                 return new Pair<String, Boolean>("", true);
             }
 
-            boolean isValid = True;
+            boolean isValid = true;
             StringBuilder querySB = new StringBuilder();
 
             querySB.append('?');
@@ -189,7 +277,7 @@ public class UrlValidatorTest extends TestCase {
         }
 
         private char nextChar(char[] alphabet) {
-            return testAlphabet[rand.nextInt(alphabet.length)];
+            return alphabet[rand.nextInt(alphabet.length)];
         }
 
         private boolean setToNull() {
