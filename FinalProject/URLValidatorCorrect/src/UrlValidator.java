@@ -295,16 +295,20 @@ public class UrlValidator implements Serializable {
      * @return true if the url is valid.
      */
     public boolean isValid(String value) {
+
+        // TODO: check for null value
         if (value == null) {
             return false;
         }
 
         // Check the whole url address structure
-        Matcher urlMatcher = URL_PATTERN.matcher(value);
+        Matcher urlMatcher = URL_PATTERN.matcher(value); // regex object
         if (!urlMatcher.matches()) {
             return false;
         }
 
+
+        // checks to make sure there is an http/etc and is not null
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
             return false;
@@ -324,6 +328,7 @@ public class UrlValidator implements Serializable {
                 return false;
             }
         }
+
 
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
             return false;
