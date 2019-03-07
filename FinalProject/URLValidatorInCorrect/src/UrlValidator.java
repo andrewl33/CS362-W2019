@@ -298,6 +298,11 @@ public class UrlValidator implements Serializable {
      * @return true if the url is valid.
      */
     public boolean isValid(String value) {
+
+        // TODO: remove
+//        System.out.println("test ");
+//        System.out.println(value);
+
         if (value == null) {
             return false;
         }
@@ -308,11 +313,16 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
+        // TODO: remove
+        System.out.println("1");
+
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
             return false;
         }
 
+        // TODO: remove
+        System.out.println("2");
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
 
         if ("http".equals(scheme)) {// Special case - file: allows an empty authority
@@ -329,17 +339,28 @@ public class UrlValidator implements Serializable {
             }
         }
 
+        // TODO: remove
+        System.out.println("3");
+
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
             return false;
         }
 
+        // TODO: remove
+        System.out.println("4");
         if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
             return false;
         }
 
+        // TODO: remove
+        System.out.println("5");
+
         if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
             return false;
         }
+
+        // TODO: remove
+        System.out.println("6");
 
         return true;
     }
@@ -390,6 +411,9 @@ public class UrlValidator implements Serializable {
             return true;
         }
         // convert to ASCII if possible
+        // TODO: remove
+        // System.out.println(authority);
+        System.out.println(authority);
         final String authorityASCII = DomainValidator.unicodeToASCII(authority);
 
         Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authorityASCII);

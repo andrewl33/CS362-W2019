@@ -47,10 +47,16 @@ public class UrlValidatorTest extends TestCase {
 
         for (int i = 0; i < iterations; i++) {
             Pair<String, Boolean> randUrl = randUrlGen.generateUrl();
+            System.out.println(randUrl.getKey());
             boolean result = urlVal.isValid(randUrl.getKey());
 
+
+
             if (result != randUrl.getValue()) {
-                System.out.print(randUrl.getKey());
+                System.out.print("Invalid: ");
+                System.out.println(randUrl.getKey());
+                System.out.print(result);
+                System.out.print(randUrl.getValue());
             }
         }
 
@@ -81,7 +87,7 @@ public class UrlValidatorTest extends TestCase {
         private final ArrayList<String> validSchemes = new ArrayList<String>() {{
             add("http://");
             add("ftp://");
-            add("h3t://");
+            // add("h3t://");
             add("");
         }};
         private final int maxPort = 65536;
@@ -96,13 +102,14 @@ public class UrlValidatorTest extends TestCase {
             boolean isValid = true;
             StringBuilder sb = new StringBuilder();
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
-            url.add(generateScheme());
-            url.add(generateAuthority());
-            url.add(generatePort());
-            url.add(generatePath());
-            url.add(generateQuery());
+            // url.add(generateScheme());
+//            url.add(generateAuthority());
+            url.add(new Pair<String, Boolean>("hf3://www.google.com", true));
+//            url.add(generatePort());
+//            url.add(generatePath());
+//            url.add(generateQuery());
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < url.size(); i++) {
                 sb.append(url.get(i).getKey());
                 if (!url.get(i).getValue()) {
                     isValid = false;
@@ -114,7 +121,7 @@ public class UrlValidatorTest extends TestCase {
 
         private Pair<String, Boolean> generateScheme() {
             // has to be a part of valid schemes
-            if (rand.nextBoolean()) {
+            if (rand.nextBoolean() || true) {
                 return new Pair<>(validSchemes.get(rand.nextInt(validSchemes.size())), true);
             } else {
                 StringBuilder sb = new StringBuilder(validSchemes.get(rand.nextInt(validSchemes.size())));
@@ -124,19 +131,22 @@ public class UrlValidatorTest extends TestCase {
                         case 0:
                             //  prepend
                             sb.insert(0, nextChar(authAlphabet));
+                            break;
                         case 1:
                             // append
                             sb.append(nextChar(authAlphabet));
+                            break;
                         case 2:
                             // replace
                             int location = rand.nextInt(sb.length());
                             sb.replace(location, location, Character.toString(nextChar(authAlphabet)));
+                            break;
                         case 3:
                             // delete
                             if (sb.length() > 0) {
                                 sb.deleteCharAt(rand.nextInt(sb.length()));
                             }
-
+                            break;
                     }
                 }
 
