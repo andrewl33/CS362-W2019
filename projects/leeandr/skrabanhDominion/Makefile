@@ -107,6 +107,19 @@ unittestresult: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c card
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> cardtest4.out
 
+	echo "greathalltestcard.c" >> unittestresults.out
+	gcc test_helper.c rngs.c dominion.c greathallcardtest.c -o greathallcardtest $(CFLAGS)
+	./greathallcardtest >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> greathallcardtest.out
+
+	echo "councilroomcardtest.c:" >> unittestresults.out
+	gcc  test_helper.c rngs.c dominion.c councilroomcardtest.c -o councilroomcardtest $(CFLAGS)
+	./councilroomcardtest >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> councilroomcardtest.out
+
+
 allusertest: runrandomtests unittestresult
 
 clean:

@@ -806,7 +806,7 @@ int villageEffect(int handPos, struct gameState *state)
 int greathallEffect(int handPos, struct gameState *state)
 {
   int currentPlayer = whoseTurn(state);
-  printf("prev state greathall action: %d, hand count %d\n", state->numActions, state->handCount[currentPlayer]);
+  //printf("prev state greathall action: %d, hand count %d\n", state->numActions, state->handCount[currentPlayer]);
   //+1 Card
   drawCard(currentPlayer, state);
 
@@ -815,7 +815,7 @@ int greathallEffect(int handPos, struct gameState *state)
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  printf("post state greathall action: %d, hand count %d\n", state->numActions, state->handCount[currentPlayer]);
+  // printf("post state greathall action: %d, hand count %d\n", state->numActions, state->handCount[currentPlayer]);
   return 0;
 }
 
@@ -833,7 +833,7 @@ int councilroomEffect(int handPos, struct gameState *state)
   state->numBuys++;
 
   //Each other player draws a card
-  for (i = 1; i < state->numPlayers; i++)
+  for (i = 0; i < state->numPlayers; i++)
   {
     if (i != currentPlayer)
     {

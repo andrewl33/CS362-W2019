@@ -1,0 +1,84 @@
+Result for running unit tests:
+unittest1.c:
+True: state is not null
+True: state is sizeof gameState
+File 'dominion.c'
+Lines executed:0.47% of 636
+Creating 'dominion.c.gcov'
+
+unittest2.c:
+True: returns error on empty state
+True: returns error on initialized, but empty deck
+True: empty user deck still runs
+True: state shuffle should be equal
+File 'dominion.c'
+Lines executed:6.45% of 636
+Creating 'dominion.c.gcov'
+
+unittest3.c:
+True: counts 0 for no cards
+True: counts 7 for initial copper
+True: double copper size
+File 'dominion.c'
+Lines executed:18.08% of 636
+Creating 'dominion.c.gcov'
+
+unittest4.c:
+True: initial turn is 0
+True: initial turn can be set
+File 'dominion.c'
+Lines executed:16.51% of 636
+Creating 'dominion.c.gcov'
+
+cardtest1.c:
+True: discard pile should be 0
+True: handCount should be 7
+True: deckCount should be 3
+File 'dominion.c'
+Lines executed:20.13% of 636
+Creating 'dominion.c.gcov'
+
+cardtest2.c:
+deck size is: 5
+True: draws three cards
+True: deckCount should be 2
+File 'dominion.c'
+Lines executed:20.91% of 636
+Creating 'dominion.c.gcov'
+
+cardtest3.c:
+True: province should return error
+True: out of bounds card should return error
+True: cost is greater should return error
+True: valid cards should run without error
+File 'dominion.c'
+Lines executed:24.84% of 636
+Creating 'dominion.c.gcov'
+
+cardtest4.c:
+True: adds and removes a card to hand
+True: a card is played
+True: removes one card from the deck
+True: should get an extra 2 actions
+File 'dominion.c'
+Lines executed:20.91% of 636
+Creating 'dominion.c.gcov'
+
+greathalltestcard.c
+great_hall
+True: adds and removes a card to hand
+True: should get an extra 1 action
+File 'dominion.c'
+Lines executed:21.07% of 636
+Creating 'dominion.c.gcov'
+
+councilroomcardtest.c:
+True: adds 4 and removes a card to hand
+True: should add one card to player
+True: should add one card to player
+True: should add one card to player
+True: Should add a buy
+File 'dominion.c'
+Lines executed:21.70% of 636
+Creating 'dominion.c.gcov'
+
