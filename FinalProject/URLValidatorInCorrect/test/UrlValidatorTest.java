@@ -1,11 +1,9 @@
-
-
+import javafx.util.Pair;
 import junit.framework.TestCase;
 import org.junit.Test;
-import java.util.Random;
+
 import java.util.ArrayList;
-import java.util.List;
-import javafx.util.Pair;
+import java.util.Random;
 
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
@@ -39,6 +37,23 @@ public class UrlValidatorTest extends TestCase {
     @Test
     public void testYourSecondPartition(){
         //You can use this function to implement your Second Partition testing
+
+        // TODO: what are partitions?
+
+        // random testing
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+        UrlGenerator randUrlGen = new UrlGenerator();
+        int iterations = 5;
+
+        for (int i = 0; i < iterations; i++) {
+            Pair<String, Boolean> randUrl = randUrlGen.generateUrl();
+            boolean result = urlVal.isValid(randUrl.getKey());
+
+            if (result != randUrl.getValue()) {
+                System.out.print(randUrl.getKey());
+            }
+        }
+
 
     }
     //You need to create more test cases for your Partitions if you need to
@@ -77,7 +92,7 @@ public class UrlValidatorTest extends TestCase {
         private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
         //  random regexes, where falses could be 0 to list size
-        public Pair<String, Boolean> generateUrls() {
+        public Pair<String, Boolean> generateUrl() {
             boolean isValid = true;
             StringBuilder sb = new StringBuilder();
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
@@ -118,7 +133,10 @@ public class UrlValidatorTest extends TestCase {
                             sb.replace(location, location, Character.toString(nextChar(authAlphabet)));
                         case 3:
                             // delete
-                            sb.deleteCharAt(rand.nextInt(sb.length()));
+                            if (sb.length() > 0) {
+                                sb.deleteCharAt(rand.nextInt(sb.length()));
+                            }
+
                     }
                 }
 
