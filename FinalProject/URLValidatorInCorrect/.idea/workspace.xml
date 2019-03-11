@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f53ef47c-a0e4-4ca5-a513-03db960fc964" name="Default Changelist" comment="" />
+    <list default="true" id="f53ef47c-a0e4-4ca5-a513-03db960fc964" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/URLValidatorInCorrect/UrlValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/URLValidatorInCorrect/UrlValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest$UrlGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest$UrlGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest$UrlGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest$UrlGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/URLValidatorInCorrect/UrlValidatorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UrlValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UrlValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/UrlValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/UrlValidatorTest.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,12 +18,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="92" column="17" lean-forward="true" selection-end-line="372" />
+            <state relative-caret-position="495">
+              <caret line="369" column="31" lean-forward="true" selection-start-line="369" selection-start-column="31" selection-end-line="369" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#16176#16177#0" expanded="true" />
+                <element signature="e#16275#16276#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -23,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UrlValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="415" column="37" selection-start-line="415" selection-start-column="37" selection-end-line="415" selection-end-column="37" />
+            <state relative-caret-position="334">
+              <caret line="348" selection-start-line="348" selection-end-line="348" />
             </state>
           </provider>
         </entry>
@@ -35,13 +48,16 @@
     <findStrings>
       <find>www.</find>
       <find>is</find>
-      <find>todo</find>
       <find>System.out.println</find>
       <find>system.out</find>
       <find>allowedSchemes.add(schemes[i]</find>
       <find>authority</find>
       <find>http</find>
       <find>authori</find>
+      <find>if (&quot;</find>
+      <find>System.out</find>
+      <find>todo</find>
+      <find>query</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -56,10 +72,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="228" />
-    <option name="y" value="-15" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="1906" />
+    <option name="y" value="-651" />
+    <option name="width" value="3758" />
+    <option name="height" value="2184" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -67,7 +83,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -89,6 +104,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -97,7 +113,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551930230737" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552344591410" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -114,7 +130,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.UrlValidatorTest.testRandomIsValid">
+    <configuration name="UrlValidatorTest.testRandomIsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="URLValidatorInCorrect" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <option name="METHOD_NAME" value="testRandomIsValid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UrlValidatorTest.testYourSecondPartition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="URLValidatorInCorrect" />
       <option name="PACKAGE_NAME" value="" />
@@ -127,6 +153,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UrlValidatorTest.testRandomIsValid" />
         <item itemvalue="JUnit.UrlValidatorTest.testYourSecondPartition" />
       </list>
     </recent_temporary>
@@ -145,66 +172,67 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 36m 45s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 31m 41s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 37m 00s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 32m 11s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 37m 57s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 33m 19s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 40m 14s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 35m 05s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 40m 34s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 36m 35s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 40m 43s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 43m 44s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 40m 53s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 45m 45s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 40m 59s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 48m 24s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 41m 02s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 48m 37s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UrlValidatorTest_testYourSecondPartition - 2019.03.06 at 19h 41m 08s.xml">
-      <configuration name="UrlValidatorTest.testYourSecondPartition" configurationId="JUnit" />
+    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 15h 49m 23s.xml">
+      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1913" y="-644" width="2146" height="1248" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25478926" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3290461" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40300107" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4028648" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32855865" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
       <window_info id="Image Layers" order="0" />
@@ -260,15 +288,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrlValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="415" column="37" selection-start-line="415" selection-start-column="37" selection-end-line="415" selection-end-column="37" />
+        <state relative-caret-position="334">
+          <caret line="348" selection-start-line="348" selection-end-line="348" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="92" column="17" lean-forward="true" selection-end-line="372" />
+        <state relative-caret-position="495">
+          <caret line="369" column="31" lean-forward="true" selection-start-line="369" selection-start-column="31" selection-end-line="369" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#16176#16177#0" expanded="true" />
+            <element signature="e#16275#16276#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

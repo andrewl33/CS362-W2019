@@ -34,34 +34,7 @@ public class UrlValidatorTest extends TestCase {
         //You can use this function to implement your First Partition testing
 
     }
-    @Test
-    public void testYourSecondPartition(){
-        //You can use this function to implement your Second Partition testing
 
-        // TODO: what are partitions?
-
-        // random testing
-        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-        UrlGenerator randUrlGen = new UrlGenerator();
-        int iterations = 5;
-
-        for (int i = 0; i < iterations; i++) {
-            Pair<String, Boolean> randUrl = randUrlGen.generateUrl();
-            System.out.println(randUrl.getKey());
-            boolean result = urlVal.isValid(randUrl.getKey());
-
-
-
-            if (result != randUrl.getValue()) {
-                System.out.print("Invalid: ");
-                System.out.println(randUrl.getKey());
-                System.out.print(result);
-                System.out.print(randUrl.getValue());
-            }
-        }
-
-
-    }
     //You need to create more test cases for your Partitions if you need to
     @Test
     public void testIsValid()
@@ -71,62 +44,196 @@ public class UrlValidatorTest extends TestCase {
     }
 
 
+    @Test
+    public void testRandomIsValid(){
+        // random testing
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+        UrlGenerator randUrlGen = new UrlGenerator();
+        int iterations = 200;
+        int errorCount = 0;
+        int[] errorCollection = {0, 0, 0, 0, 0};
+        // test fully random
+//        for (int i = 0; i < iterations; i++) {
+//            ArrayList<Pair<String, Boolean>> randUrl = randUrlGen.generateUrl();
+//            StringBuilder sb = new StringBuilder();
+//            boolean randUrlValid = true;
+//
+//            for (int j = 0; j < 5; j++) {
+//                sb.append(randUrl.get(j).getKey());
+//                randUrlValid &=randUrl.get(j).getValue();
+//            }
+//
+//            boolean result = urlVal.isValid(sb.toString());
+//
+//            if (result != randUrlValid) {
+//                // System.out.println("Invalid: " + randUrl.getKey());
+//                errorCount++;
+//                for (int j = 0; j < 5; j++) {
+//                    if (!randUrl.get(j).getValue()) {
+//                        errorCollection[j]++;
+//                    }
+//                }
+//            }
+//        }
+
+        // test schemeless random
+        for (int i = 0; i < iterations; i++) {
+            ArrayList<Pair<String, Boolean>> randUrl = randUrlGen.generateUrlNoScheme();
+            StringBuilder sb = new StringBuilder();
+            boolean randUrlValid = true;
+
+            for (int j = 0; j < 5; j++) {
+                sb.append(randUrl.get(j).getKey());
+                randUrlValid &=randUrl.get(j).getValue();
+            }
+
+            boolean result = urlVal.isValid(sb.toString());
+
+            if (result != randUrlValid) {
+                // System.out.println("Invalid: " + randUrl.getKey());
+                errorCount++;
+                for (int j = 0; j < 5; j++) {
+                    if (!randUrl.get(j).getValue()) {
+                        errorCollection[j]++;
+                    }
+
+                    if (j == 1) {
+                        System.out.println(result + " " + randUrlValid);
+                        System.out.println(sb.toString() + " " + randUrlValid);
+                    }
+                }
+            }
+        }
+
+        // test port path query
+        for (int i = 0; i < iterations; i++) {
+            ArrayList<Pair<String, Boolean>> randUrl = randUrlGen.generateUrlTail();
+            StringBuilder sb = new StringBuilder();
+            boolean randUrlValid = true;
+
+            for (int j = 0; j < 5; j++) {
+                sb.append(randUrl.get(j).getKey());
+                randUrlValid &=randUrl.get(j).getValue();
+            }
+
+            boolean result = urlVal.isValid(sb.toString());
+
+            if (result != randUrlValid) {
+                // System.out.println("Invalid: " + randUrl.getKey());
+                errorCount++;
+                for (int j = 0; j < 5; j++) {
+                    if (!randUrl.get(j).getValue()) {
+                        errorCollection[j]++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Random test count: " + iterations * 2);
+        System.out.println("Error count: " + errorCount);
+        System.out.println("Scheme Error(ignored): " + errorCollection[0]);
+        System.out.println("Authority Error: " + errorCollection[1]);
+        System.out.println("Port Error: " + errorCollection[2]);
+        System.out.println("Path Error: " + errorCollection[3]);
+        System.out.println("Query Error: " + errorCollection[4]);
+    }
 
     // random testings
-    // all i need to do is give valid regexes
-    // To reach them all, generating each part of a url is best
-    // then add them together, with one false to catch
-
-    // and then have straight random tests, with a mix of false and true
-    // this will give a much more uneven set, however, random testing generally
-    // has a ton of false urls
-
     private static class UrlGenerator {
         private Random rand = new Random(System.currentTimeMillis());
         private final int nullChance = 100; // 1% chance
         private final ArrayList<String> validSchemes = new ArrayList<String>() {{
             add("http://");
             add("ftp://");
-            // add("h3t://");
+            add("h3t://");
             add("");
         }};
         private final int maxPort = 65536;
         private final int minPort = 0;
         // private final char[] testAlphabet = "#$%&-_=+qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlL:zZxXcCvBnNmM./?1234567890".toCharArray();
-        private final char[] pathAlphabet = "#qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvBnNmM.1234567890".toCharArray();
+        private final char[] pathAlphabet = "~#qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvBnNmM.1234567890".toCharArray();
         private final char[] queryAlphabet = "qwertyuiopasdfghjklzxcvbnm".toCharArray();
         private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
-        //  random regexes, where falses could be 0 to list size
-        public Pair<String, Boolean> generateUrl() {
-            boolean isValid = true;
-            StringBuilder sb = new StringBuilder();
+        //  random urls
+        public ArrayList<Pair<String, Boolean>> generateUrl() {
+//            boolean isValid = true;
+//            StringBuilder sb = new StringBuilder();
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
-            // url.add(generateScheme());
-//            url.add(generateAuthority());
-            url.add(new Pair<String, Boolean>("hf3://www.google.com", true));
+            url.add(generateScheme());
+            url.add(generateAuthority());
+            url.add(generatePort());
+            url.add(generatePath());
+            url.add(generateQuery());
+
+//            for (int i = 0; i < url.size(); i++) {
+//                sb.append(url.get(i).getKey());
+//                if (!url.get(i).getValue()) {
+//                    isValid = false;
+//                }
+//            }
+
+//            return new Pair<>(sb.toString(), isValid);
+            return url;
+        }
+
+        //  random urls with scheme
+        public ArrayList<Pair<String, Boolean>> generateUrlNoScheme() {
+//            boolean isValid = true;
+//            StringBuilder sb = new StringBuilder();
+            ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
+            url.add(new Pair<>("", true));
+            url.add(generateAuthority());
 //            url.add(generatePort());
 //            url.add(generatePath());
 //            url.add(generateQuery());
+            url.add(new Pair<>("", true));
+            url.add(new Pair<>("", true));
+            url.add(new Pair<>("", true));
 
-            for (int i = 0; i < url.size(); i++) {
-                sb.append(url.get(i).getKey());
-                if (!url.get(i).getValue()) {
-                    isValid = false;
-                }
-            }
+//            for (int i = 0; i < url.size(); i++) {
+//                sb.append(url.get(i).getKey());
+//                if (!url.get(i).getValue()) {
+//                    isValid = false;
+//                }
+//            }
 
-            return new Pair<>(sb.toString(), isValid);
+//            return new Pair<>(sb.toString(), isValid);
+            return url;
         }
+
+
+        // random url tail with static scheme and url ("google.com")
+        public ArrayList<Pair<String, Boolean>> generateUrlTail() {
+            // boolean isValid = true;
+            // StringBuilder sb = new StringBuilder();
+            ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
+            url.add(new Pair<>("http://", true));
+            url.add(new Pair<>("google.com", true));
+            url.add(generatePort());
+            url.add(generatePath());
+            url.add(generateQuery());
+
+//            for (int i = 0; i < url.size(); i++) {
+//                sb.append(url.get(i).getKey());
+//                if (!url.get(i).getValue()) {
+//                    isValid = false;
+//                }
+//            }
+
+//            return new Pair<>(sb.toString(), isValid);
+            return url;
+        }
+
 
         private Pair<String, Boolean> generateScheme() {
             // has to be a part of valid schemes
-            if (rand.nextBoolean() || true) {
+            if (rand.nextBoolean()) {
                 return new Pair<>(validSchemes.get(rand.nextInt(validSchemes.size())), true);
             } else {
                 StringBuilder sb = new StringBuilder(validSchemes.get(rand.nextInt(validSchemes.size())));
 
-                for (int i = 0; i < rand.nextInt(4); i++)  {
+                for (int i = 0; i < rand.nextInt(7); i++)  {
                     switch(rand.nextInt(4)) {
                         case 0:
                             //  prepend
@@ -138,6 +245,10 @@ public class UrlValidatorTest extends TestCase {
                             break;
                         case 2:
                             // replace
+                            if (sb.length() <1)
+                            {
+                                break;
+                            }
                             int location = rand.nextInt(sb.length());
                             sb.replace(location, location, Character.toString(nextChar(authAlphabet)));
                             break;
@@ -163,9 +274,7 @@ public class UrlValidatorTest extends TestCase {
                         break;
                     }
                 }
-
                 return new Pair<>(sb.toString(), isValid);
-
             }
         }
 
@@ -224,18 +333,21 @@ public class UrlValidatorTest extends TestCase {
 
                 // insert first
                 if (rand.nextBoolean()) {
-                    sb.append("www.");
-                }
-
-                if (rand.nextBoolean()) {
                     sb.append('.');
                     isValid = false;
                 }
 
+                if (rand.nextBoolean()) {
+                    sb.append("www.");
+                }
+
                 // insert body
-                for (int i = 1; i < rand.nextInt(5) + 1; i++) {
-                    for (int j = 1; j < rand.nextInt(10) + 1; j++) {
+                for (int i = 2; i < rand.nextInt(5) + 1; i++) {
+                    for (int j = 2; j < rand.nextInt(10) + 1; j++) {
                         sb.append(nextChar(authAlphabet));
+                    }
+                    if (sb.length() >  0 && sb.charAt(sb.length()-1) == '.') {
+                        isValid = false;
                     }
                     sb.append(".");
                 }
@@ -255,6 +367,7 @@ public class UrlValidatorTest extends TestCase {
                         }
                         sb.append(nc);
                     }
+                    sb.append("com");
                 }
 
                 return new Pair<String, Boolean>(sb.toString(), isValid);
