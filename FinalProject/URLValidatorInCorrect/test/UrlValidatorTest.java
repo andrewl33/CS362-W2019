@@ -47,6 +47,7 @@ public class UrlValidatorTest extends TestCase {
     @Test
     public void testRandomIsValid(){
         // random testing
+        boolean printErrors = true;
         UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
         UrlGenerator randUrlGen = new UrlGenerator();
         int iterations = 200;
@@ -68,42 +69,31 @@ public class UrlValidatorTest extends TestCase {
 //            if (result != randUrlValid) {
 //                // System.out.println("Invalid: " + randUrl.getKey());
 //                errorCount++;
-//                for (int j = 0; j < 5; j++) {
-//                    if (!randUrl.get(j).getValue()) {
-//                        errorCollection[j]++;
-//                    }
-//                }
 //            }
 //        }
 
-        // test schemeless random
-        for (int i = 0; i < iterations; i++) {
-            ArrayList<Pair<String, Boolean>> randUrl = randUrlGen.generateUrlNoScheme();
-            StringBuilder sb = new StringBuilder();
-            boolean randUrlValid = true;
-
-            for (int j = 0; j < 5; j++) {
-                sb.append(randUrl.get(j).getKey());
-                randUrlValid &=randUrl.get(j).getValue();
-            }
-
-            boolean result = urlVal.isValid(sb.toString());
-
-            if (result != randUrlValid) {
-                // System.out.println("Invalid: " + randUrl.getKey());
-                errorCount++;
-                for (int j = 0; j < 5; j++) {
-                    if (!randUrl.get(j).getValue()) {
-                        errorCollection[j]++;
-                    }
-
-                    if (j == 1) {
-                        System.out.println(result + " " + randUrlValid);
-                        System.out.println(sb.toString() + " " + randUrlValid);
-                    }
-                }
-            }
-        }
+        // test schemeless random authority
+//        for (int i = 0; i < iterations; i++) {
+//            ArrayList<Pair<String, Boolean>> randUrl = randUrlGen.generateUrlAuth();
+//            StringBuilder sb = new StringBuilder();
+//            boolean randUrlValid = true;
+//
+//            for (int j = 0; j < 5; j++) {
+//                sb.append(randUrl.get(j).getKey());
+//                randUrlValid &=randUrl.get(j).getValue();
+//            }
+//
+//            boolean result = urlVal.isValid(sb.toString());
+//
+//            if (result != randUrlValid) {
+//                errorCount++;
+//                errorCollection[1]++;
+//
+//                if (printErrors) {
+//                    System.out.println(sb.toString() + " " + randUrlValid);
+//                }
+//            }
+//        }
 
         // test port path query
         for (int i = 0; i < iterations; i++) {
@@ -119,23 +109,22 @@ public class UrlValidatorTest extends TestCase {
             boolean result = urlVal.isValid(sb.toString());
 
             if (result != randUrlValid) {
-                // System.out.println("Invalid: " + randUrl.getKey());
                 errorCount++;
-                for (int j = 0; j < 5; j++) {
-                    if (!randUrl.get(j).getValue()) {
-                        errorCollection[j]++;
-                    }
+
+                errorCollection[2]++;
+
+                if (printErrors) {
+                    System.out.println(sb.toString() + " " + randUrlValid);
                 }
             }
         }
 
         System.out.println("Random test count: " + iterations * 2);
-        System.out.println("Error count: " + errorCount);
+        System.out.println("Total Error count: " + errorCount);
+        System.out.println("Total Error count: " + errorCount);
         System.out.println("Scheme Error(ignored): " + errorCollection[0]);
         System.out.println("Authority Error: " + errorCollection[1]);
-        System.out.println("Port Error: " + errorCollection[2]);
-        System.out.println("Path Error: " + errorCollection[3]);
-        System.out.println("Query Error: " + errorCollection[4]);
+        System.out.println("Port/Path/Query Error: " + errorCollection[2]);
     }
 
     // random testings
@@ -150,15 +139,12 @@ public class UrlValidatorTest extends TestCase {
         }};
         private final int maxPort = 65536;
         private final int minPort = 0;
-        // private final char[] testAlphabet = "#$%&-_=+qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlL:zZxXcCvBnNmM./?1234567890".toCharArray();
         private final char[] pathAlphabet = "~#qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvBnNmM.1234567890".toCharArray();
         private final char[] queryAlphabet = "qwertyuiopasdfghjklzxcvbnm".toCharArray();
         private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
         //  random urls
         public ArrayList<Pair<String, Boolean>> generateUrl() {
-//            boolean isValid = true;
-//            StringBuilder sb = new StringBuilder();
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
             url.add(generateScheme());
             url.add(generateAuthority());
@@ -166,47 +152,23 @@ public class UrlValidatorTest extends TestCase {
             url.add(generatePath());
             url.add(generateQuery());
 
-//            for (int i = 0; i < url.size(); i++) {
-//                sb.append(url.get(i).getKey());
-//                if (!url.get(i).getValue()) {
-//                    isValid = false;
-//                }
-//            }
-
-//            return new Pair<>(sb.toString(), isValid);
             return url;
         }
 
         //  random urls with scheme
-        public ArrayList<Pair<String, Boolean>> generateUrlNoScheme() {
-//            boolean isValid = true;
-//            StringBuilder sb = new StringBuilder();
+        public ArrayList<Pair<String, Boolean>> generateUrlAuth() {
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
-            url.add(new Pair<>("", true));
+            url.add(new Pair<>("http://", true));
             url.add(generateAuthority());
-//            url.add(generatePort());
-//            url.add(generatePath());
-//            url.add(generateQuery());
             url.add(new Pair<>("", true));
             url.add(new Pair<>("", true));
             url.add(new Pair<>("", true));
-
-//            for (int i = 0; i < url.size(); i++) {
-//                sb.append(url.get(i).getKey());
-//                if (!url.get(i).getValue()) {
-//                    isValid = false;
-//                }
-//            }
-
-//            return new Pair<>(sb.toString(), isValid);
             return url;
         }
 
 
         // random url tail with static scheme and url ("google.com")
         public ArrayList<Pair<String, Boolean>> generateUrlTail() {
-            // boolean isValid = true;
-            // StringBuilder sb = new StringBuilder();
             ArrayList<Pair<String, Boolean>> url = new ArrayList<Pair<String, Boolean>>();
             url.add(new Pair<>("http://", true));
             url.add(new Pair<>("google.com", true));
@@ -214,14 +176,6 @@ public class UrlValidatorTest extends TestCase {
             url.add(generatePath());
             url.add(generateQuery());
 
-//            for (int i = 0; i < url.size(); i++) {
-//                sb.append(url.get(i).getKey());
-//                if (!url.get(i).getValue()) {
-//                    isValid = false;
-//                }
-//            }
-
-//            return new Pair<>(sb.toString(), isValid);
             return url;
         }
 
@@ -245,8 +199,7 @@ public class UrlValidatorTest extends TestCase {
                             break;
                         case 2:
                             // replace
-                            if (sb.length() <1)
-                            {
+                            if (sb.length() <1) {
                                 break;
                             }
                             int location = rand.nextInt(sb.length());
@@ -285,7 +238,6 @@ public class UrlValidatorTest extends TestCase {
 
             if (rand.nextBoolean()) {
                 // numbers
-                int numbersCount = 0;
                 boolean isValid = true;
                 int i = 0;
                 StringBuilder sb = new StringBuilder();
@@ -303,7 +255,6 @@ public class UrlValidatorTest extends TestCase {
 
                     sb.append(nextInt);
                     sb.append('.');
-
                 }
 
                 if (rand.nextBoolean()) {
@@ -342,8 +293,8 @@ public class UrlValidatorTest extends TestCase {
                 }
 
                 // insert body
-                for (int i = 2; i < rand.nextInt(5) + 1; i++) {
-                    for (int j = 2; j < rand.nextInt(10) + 1; j++) {
+                for (int i = 0; i < rand.nextInt(2); i++) {
+                    for (int j = 0; j < rand.nextInt(10) + 2; j++) {
                         sb.append(nextChar(authAlphabet));
                     }
                     if (sb.length() >  0 && sb.charAt(sb.length()-1) == '.') {
@@ -359,7 +310,7 @@ public class UrlValidatorTest extends TestCase {
                     }
                     isValid = false;
                 } else {
-                    for (int i = 2; i < rand.nextInt(8) +2; i++) {
+                    for (int i = 0; i < rand.nextInt(8) +3; i++) {
                         char nc = nextChar(authAlphabet);
 
                         if (Character.isDigit(nc)) {
@@ -367,7 +318,8 @@ public class UrlValidatorTest extends TestCase {
                         }
                         sb.append(nc);
                     }
-                    sb.append("com");
+
+                    sb.append(".com");
                 }
 
                 return new Pair<String, Boolean>(sb.toString(), isValid);
@@ -394,8 +346,6 @@ public class UrlValidatorTest extends TestCase {
 
             // build it
             portBuilder.append(portNumber);
-
-            // TODO: maybe add alpha characters into the code
 
             return new Pair<String, Boolean>(portBuilder.toString(), isValid);
         }
@@ -479,7 +429,5 @@ public class UrlValidatorTest extends TestCase {
         private boolean setToNull() {
             return rand.nextInt(nullChance) == 0;
         }
-
     }
-
 }

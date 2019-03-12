@@ -147,7 +147,7 @@ public class UrlValidator implements Serializable {
     // since neither ':' nor '@' are allowed chars, we don't need to use non-greedy matching
     private static final String USERINFO_FIELD_REGEX =
             USERINFO_CHARS_REGEX + "+" + // At least one character for the name
-            "(?::" + USERINFO_CHARS_REGEX + "*)?@"; // colon and password may be absent
+                    "(?::" + USERINFO_CHARS_REGEX + "*)?@"; // colon and password may be absent
     private static final String AUTHORITY_REGEX =
             "(?:\\[("+IPV6_REGEX+")\\]|(?:(?:"+USERINFO_FIELD_REGEX+")?([" + AUTHORITY_CHARS_REGEX + "]*)))(?::(\\d*))?(.*)?";
     //             1                          e.g. user:pass@          2                                         3       4
@@ -189,7 +189,7 @@ public class UrlValidator implements Serializable {
     /**
      * If no schemes are provided, default to this set.
      */
-   private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
+    private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
 
 
 
@@ -298,11 +298,6 @@ public class UrlValidator implements Serializable {
      * @return true if the url is valid.
      */
     public boolean isValid(String value) {
-
-        // TODO: remove
-//        System.out.println("test ");
-//        System.out.println(value);
-
         if (value == null) {
             return false;
         }
@@ -334,8 +329,8 @@ public class UrlValidator implements Serializable {
             }
         }
 
-
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
+            System.out.println(value);
             return false;
         }
 
@@ -346,7 +341,6 @@ public class UrlValidator implements Serializable {
         if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
             return false;
         }
-
 
         return true;
     }
@@ -397,9 +391,6 @@ public class UrlValidator implements Serializable {
             return true;
         }
         // convert to ASCII if possible
-        // TODO: remove
-        // System.out.println(authority);
-        System.out.println(authority);
         final String authorityASCII = DomainValidator.unicodeToASCII(authority);
 
         Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authorityASCII);
@@ -411,9 +402,9 @@ public class UrlValidator implements Serializable {
         String ipv6 = authorityMatcher.group(PARSE_AUTHORITY_IPV6);
         if (ipv6 != null) {
             InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
-                if (!inetAddressValidator.isValidInet6Address(ipv6)) {
-                    return false;
-                }
+            if (!inetAddressValidator.isValidInet6Address(ipv6)) {
+                return false;
+            }
         } else {
             String hostLocation = authorityMatcher.group(PARSE_AUTHORITY_HOST_IP);
             // check if authority is hostname or IP address:
@@ -465,14 +456,14 @@ public class UrlValidator implements Serializable {
         try {
             URI uri = new URI(null,null,path,null);
             String norm = uri.normalize().getPath();
-            if (norm.startsWith("/../") // Trying to go via the parent dir 
-             || norm.equals("/..")) {   // Trying to go to the parent dir
+            if (norm.startsWith("/../") // Trying to go via the parent dir
+                    || norm.equals("/..")) {   // Trying to go to the parent dir
                 return false;
             }
         } catch (URISyntaxException e) {
             return false;
         }
-        
+
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
             return false;

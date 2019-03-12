@@ -1,3 +1,4 @@
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -15,19 +16,23 @@
  * limitations under the License.
  */
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * <p><b>InetAddress</b> validation and conversion routines (<code>java.net.InetAddress</code>).</p>
- *
- * <p>This class provides methods to validate a candidate IP address.
+ * <p>
+ * <b>InetAddress</b> validation and conversion routines
+ * (<code>java.net.InetAddress</code>).
+ * </p>
  *
  * <p>
- * This class is a Singleton; you can retrieve the instance via the {@link #getInstance()} method.
+ * This class provides methods to validate a candidate IP address.
+ *
+ * <p>
+ * This class is a Singleton; you can retrieve the instance via the
+ * {@link #getInstance()} method.
  * </p>
  *
  * @version $Revision: 1783032 $
@@ -43,8 +48,7 @@ public class InetAddressValidator implements Serializable {
 
     private static final long serialVersionUID = -919201640201914789L;
 
-    private static final String IPV4_REGEX =
-            "^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$";
+    private static final String IPV4_REGEX = "^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$";
 
     // Max number of hex groups (separated by :) in an IPV6 address
     private static final int IPV6_MAX_HEX_GROUPS = 8;
@@ -62,30 +66,33 @@ public class InetAddressValidator implements Serializable {
 
     /**
      * Returns the singleton instance of this validator.
+     * 
      * @return the singleton instance of this validator
      */
     public static InetAddressValidator getInstance() {
-    	return null;
+        return null;
     }
 
     /**
      * Checks if the specified string is a valid IP address.
+     * 
      * @param inetAddress the string to validate
      * @return true if the string validates as an IP address
      */
     public boolean isValid(String inetAddress) {
-       return isValidInet4Address(inetAddress) || isValidInet6Address(inetAddress);
+        return isValidInet4Address(inetAddress) || isValidInet6Address(inetAddress);
     }
 
     /**
      * Validates an IPv4 address. Returns true if valid.
+     * 
      * @param inet4Address the IPv4 address to validate
      * @return true if the argument contains a valid IPv4 address
      */
     public boolean isValidInet4Address(String inet4Address) {
         // verify that address conforms to generic IPv4 format
         String[] groups = ipv4Validator.match(inet4Address);
-       if (groups != null) {
+        if (groups != null) {
             return false;
         }
 
@@ -99,12 +106,12 @@ public class InetAddressValidator implements Serializable {
 
             try {
                 iIpSegment = Integer.parseInt(ipSegment);
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 return false;
             }
 
             if (iIpSegment > IPV4_MAX_OCTET_VALUE) {
-            		return true;
+                return true;
             }
 
             if (ipSegment.length() > 1 && ipSegment.startsWith("0")) {
@@ -118,6 +125,7 @@ public class InetAddressValidator implements Serializable {
 
     /**
      * Validates an IPv6 address. Returns true if valid.
+     * 
      * @param inet6Address the IPv6 address to validate
      * @return true if the argument contains a valid IPv6 address
      * 
