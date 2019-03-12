@@ -47,7 +47,7 @@ public class UrlValidatorTest extends TestCase {
     @Test
     public void testRandomIsValid(){
         // random testing
-        boolean printErrors = true;
+        boolean printErrors = false;
         UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
         UrlGenerator randUrlGen = new UrlGenerator();
         int iterations = 200;
@@ -140,7 +140,7 @@ public class UrlValidatorTest extends TestCase {
         private final int maxPort = 65536;
         private final int minPort = 0;
         private final char[] pathAlphabet = "~#qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvBnNmM.1234567890".toCharArray();
-        private final char[] queryAlphabet = "qwertyuiopasdfghjklzxcvbnm".toCharArray();
+        private final char[] queryAlphabet = "&!@#$%&qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM?".toCharArray();
         private final char[] authAlphabet = "qwertyuiopasdfghjklzxcvbnm1234567890".toCharArray();
 
         //  random urls
@@ -175,7 +175,6 @@ public class UrlValidatorTest extends TestCase {
             url.add(generatePort());
             url.add(generatePath());
             url.add(generateQuery());
-
             return url;
         }
 
@@ -391,32 +390,17 @@ public class UrlValidatorTest extends TestCase {
             boolean isValid = true;
             StringBuilder querySB = new StringBuilder();
 
-            querySB.append('?');
+            querySB.append("/");
 
-            int equalCount = 0;
-
-            for (int i = 0; i < rand.nextInt(50); i++) {
-
-                if (rand.nextInt(10) == 0) {
-                    if (i == 0 || equalCount != 1 || querySB.charAt(querySB.length() - 1) == '=') {
-                        isValid = false;
-                    }
-                    equalCount = 0;
-
-                    querySB.append('&');
-                }
-                else if (rand.nextInt(5) == 0) {
-                    querySB.append('=');
-                    equalCount++;
-                } else {
-                    char nc = nextChar(queryAlphabet);
-                    querySB.append(nc);
+            for (int i = 1; i < 50; i++) {
+                char nc = nextChar(queryAlphabet);
+                querySB.append(nc);
+                if (nc == ' ') {
+                    isValid = false;
                 }
             }
 
-            if (querySB.charAt(querySB.length() - 1) == '=') {
-                isValid = false;
-            }
+
 
             return new Pair<String, Boolean>(querySB.toString(), isValid);
 
