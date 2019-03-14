@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f53ef47c-a0e4-4ca5-a513-03db960fc964" name="Default Changelist" comment="" />
+    <list default="true" id="f53ef47c-a0e4-4ca5-a513-03db960fc964" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/test/UrlValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/UrlValidatorTest.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +18,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7054">
-                  <caret line="400" column="13" lean-forward="true" selection-start-line="400" selection-start-column="13" selection-end-line="400" selection-end-column="13" />
+                <state relative-caret-position="276">
+                  <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#13528#13529#0" expanded="true" />
                     <element signature="e#13598#13599#0" expanded="true" />
+                    <element signature="e#13637#13638#0" expanded="true" />
                     <element signature="e#13697#13698#0" expanded="true" />
                   </folding>
                 </state>
@@ -30,7 +34,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DomainValidator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4117">
+                <state relative-caret-position="3772">
                   <caret line="184" column="35" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#101440#0" expanded="true" />
@@ -42,8 +46,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/regex/Matcher.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="811" column="40" lean-forward="true" selection-start-line="811" selection-start-column="40" selection-end-line="811" selection-end-column="40" />
+                <state relative-caret-position="17802">
+                  <caret line="811" column="40" selection-start-line="811" selection-start-column="40" selection-end-line="811" selection-end-column="40" />
                   <folding>
                     <element signature="e#21591#21592#0" expanded="true" />
                     <element signature="e#21636#21637#0" expanded="true" />
@@ -55,11 +59,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/UrlValidator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="265">
+                <state relative-caret-position="6486">
                   <caret line="317" selection-start-line="317" selection-end-line="322" selection-end-column="13" />
                 </state>
               </provider>
@@ -127,6 +131,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -137,19 +143,12 @@
             <path>
               <item name="URLValidatorInCorrect" type="b2602c69:ProjectViewProjectNode" />
               <item name="URLValidatorInCorrect" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="URLValidatorInCorrect" type="b2602c69:ProjectViewProjectNode" />
-              <item name="URLValidatorInCorrect" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -157,7 +156,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552361506084" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552605700358" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -174,7 +173,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UrlValidatorTest.testRandomIsValid">
+  <component name="RunManager" selected="Application.UrlValidatorTest">
+    <configuration name="UrlValidatorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <module name="URLValidatorInCorrect" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UrlValidatorTest.testManualTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="URLValidatorInCorrect" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <option name="METHOD_NAME" value="testManualTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UrlValidatorTest.testRandomIsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="URLValidatorInCorrect" />
       <option name="PACKAGE_NAME" value="" />
@@ -197,6 +213,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UrlValidatorTest" />
+        <item itemvalue="JUnit.UrlValidatorTest.testManualTest" />
         <item itemvalue="JUnit.UrlValidatorTest.testRandomIsValid" />
         <item itemvalue="JUnit.UrlValidatorTest.testYourSecondPartition" />
       </list>
@@ -216,9 +234,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 20h 18m 30s.xml">
-      <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 20h 18m 41s.xml">
       <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
@@ -246,9 +261,13 @@
     <history-entry file="UrlValidatorTest_testRandomIsValid - 2019.03.11 at 20h 28m 44s.xml">
       <configuration name="UrlValidatorTest.testRandomIsValid" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UrlValidatorTest_testManualTest - 2019.03.14 at 16h 21m 25s.xml">
+      <configuration name="UrlValidatorTest.testManualTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15416667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -259,7 +278,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32460734" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32460734" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -287,17 +306,6 @@
             <element signature="e#2817#2818#0" expanded="true" />
             <element signature="e#3238#3239#0" expanded="true" />
             <element signature="e#3295#3296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/regex/Matcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="811" column="40" lean-forward="true" selection-start-line="811" selection-start-column="40" selection-end-line="811" selection-end-column="40" />
-          <folding>
-            <element signature="e#21591#21592#0" expanded="true" />
-            <element signature="e#21636#21637#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -337,7 +345,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4117">
+        <state relative-caret-position="3772">
           <caret line="184" column="35" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
           <folding>
             <element signature="e#0#101440#0" expanded="true" />
@@ -345,22 +353,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/regex/Matcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7054">
-          <caret line="400" column="13" lean-forward="true" selection-start-line="400" selection-start-column="13" selection-end-line="400" selection-end-column="13" />
+        <state relative-caret-position="17802">
+          <caret line="811" column="40" selection-start-line="811" selection-start-column="40" selection-end-line="811" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13598#13599#0" expanded="true" />
-            <element signature="e#13697#13698#0" expanded="true" />
+            <element signature="e#21591#21592#0" expanded="true" />
+            <element signature="e#21636#21637#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UrlValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
+        <state relative-caret-position="6486">
           <caret line="317" selection-start-line="317" selection-end-line="322" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13528#13529#0" expanded="true" />
+            <element signature="e#13598#13599#0" expanded="true" />
+            <element signature="e#13637#13638#0" expanded="true" />
+            <element signature="e#13697#13698#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
@@ -25,7 +26,30 @@ public class UrlValidatorTest extends TestCase {
     public void testManualTest()
     {
 //You can use this function to implement your manual testing	   
+        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+        String testInput;
+        boolean semaphore = true;
 
+        Scanner reader = new Scanner(System.in);
+
+        //type "quit!!" to end testing
+        while(semaphore == true){
+            System.out.println("Enter a URL to check: ");
+
+            testInput = reader.nextLine();
+
+            if(urlVal.isValid(testInput)){
+                System.out.println("Valid!");
+            }else{
+                System.out.println("InValid!");
+            }
+
+            if(testInput.equals("quit!!")){
+                semaphore = false;
+                System.out.println("Ending Testing...");
+            }
+        }
+        reader.close();
     }
 
     @Test
@@ -125,6 +149,11 @@ public class UrlValidatorTest extends TestCase {
         System.out.println("Scheme Error(ignored): " + errorCollection[0]);
         System.out.println("Authority Error: " + errorCollection[1]);
         System.out.println("Port/Path/Query Error: " + errorCollection[2]);
+    }
+
+    public static void main(String[] argv){
+        UrlValidatorTest fct = new UrlValidatorTest("url test");
+        fct.testManualTest();
     }
 
     // random testings
