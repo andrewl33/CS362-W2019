@@ -18,8 +18,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+                <state relative-caret-position="349">
+                  <caret line="243" column="29" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#13528#13529#0" expanded="true" />
@@ -156,7 +156,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552605700358" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552605960505" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -373,8 +373,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+        <state relative-caret-position="349">
+          <caret line="243" column="29" selection-start-line="243" selection-start-column="29" selection-end-line="243" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#13528#13529#0" expanded="true" />
